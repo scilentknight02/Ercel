@@ -7,13 +7,23 @@ import React, { useState } from "react";
 // };
 
 // JavaScript From Here
-
-const formValidation = () => {
-  var fname;
-};
-
+const reset = () => {};
 const Registration = () => {
   const [formData, setFormData] = useState({
+    // State to hold form data
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    age: "",
+    gender: "",
+    dateOfBirth: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // State to hold error messages
+  const [errors, setErrors] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -35,6 +45,25 @@ const Registration = () => {
       alert("Passwords do not match!");
       return;
     }
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(formData.email)) {
+      alert("Please enter a valid email");
+    }
+
+    if (formData.password.length < 8) {
+      alert("Password must be at least 8 characters long");
+      return;
+    }
+    if (!/[A-Z]/.test(formData.password)) {
+      alert("Password must contain at least one uppercase letter");
+    }
+    if (!/[0-9]/.test(formData.password)) {
+      alert("Password must contain at least one number");
+    }
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+      alert("Password must contain at least one special character");
+    }
+
     console.log("Form Submitted", formData);
   };
 
@@ -46,7 +75,9 @@ const Registration = () => {
             <h2 className="text-center mb-4">Register</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-2">
-                <label className="form-label">First Name</label>
+                <label className="form-label">
+                  First Name &nbsp;<span>*</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -59,7 +90,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Last Name</label>
+                <label className="form-label">
+                  Last Name &nbsp;<span>*</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -72,7 +105,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Email</label>
+                <label className="form-label">
+                  Email &nbsp;<span>*</span>
+                </label>
                 <input
                   type="email"
                   className="form-control"
@@ -85,7 +120,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Phone</label>
+                <label className="form-label">
+                  Phone &nbsp;<span>*</span>
+                </label>
                 <input
                   type="tel"
                   className="form-control"
@@ -98,20 +135,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Age</label>
-                <input
-                  type="number"
-                  className="form-control"
-                  name="age"
-                  id="age"
-                  value={formData.age}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="mb-2">
-                <label className="form-label">Gender</label>
+                <label className="form-label">
+                  Gender &nbsp;<span>*</span>
+                </label>
                 <select
                   className="form-control"
                   name="gender"
@@ -119,15 +145,22 @@ const Registration = () => {
                   onChange={handleChange}
                   required
                 >
-                  <option value="">Select</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
+                  <option value="" className="bg-dark">
+                    Select
+                  </option>
+                  <option value="male" className="bg-sucess">
+                    Male
+                  </option>
+                  <option value="female" className="bg-sucess">
+                    Female
+                  </option>
                 </select>
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Date of Birth</label>
+                <label className="form-label">
+                  Date of Birth &nbsp;<span>*</span>
+                </label>
                 <input
                   type="date"
                   className="form-control"
@@ -140,7 +173,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-2">
-                <label className="form-label">Password</label>
+                <label className="form-label">
+                  Password &nbsp;<span>*</span>
+                </label>
                 <input
                   type="password"
                   className="form-control"
@@ -153,7 +188,9 @@ const Registration = () => {
               </div>
 
               <div className="mb-4">
-                <label className="form-label">Confirm Password</label>
+                <label className="form-label">
+                  Confirm Password &nbsp;<span>*</span>
+                </label>
                 <input
                   type="password"
                   className="form-control"

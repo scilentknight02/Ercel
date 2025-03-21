@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="position-sticky top-0 start-0 w-100 bg-primary py-2 d-flex justify-content-between px-4 z-index-999">
+    <div className="position-sticky top-0 start-0 w-100 bg-info py-2 d-flex justify-content-between px-4 z-1">
       <div className="w-25">
         <img src="/vite.svg" alt="Logo" className="img-fluid" />
       </div>
