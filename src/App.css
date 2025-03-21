@@ -1,3 +1,53 @@
-.carousel img {
-  height: 450px;
+/* @import "tailwindcss"; */
+/* External css apply here or in main.jsx */
+
+/* Header.jsx start */
+.nav-link-custom {
+  text-decoration: none; /* Remove default underline */
+  color: white; /* Set default color */
+  position: relative;
+  transition: color 0.3s ease-in-out;
 }
+
+.nav-link-custom:hover {
+  color: yellow; /* Change color on hover */
+}
+
+.nav-link-custom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: yellow;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link-custom:hover::after {
+  width: 100%; /* Underline expands on hover */
+}
+/* Header.jsx end */
+
+/* Register.jsx stat */
+/* .und{
+  text-decoration: none;
+} */
+/* Register.jsx end */
+
+/* Login.jsx stat */
+/* .und{
+  text-decoration: none;
+} */
+/* Login.jsx end */
+
+/* Cart.jsx start */
+
+.cart {
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* Cart.jsx end */
+
+/* Footer.jsx start */

@@ -1,75 +1,64 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // To navigate after login
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  // Handle form submission
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Simple validation (You can replace this with actual logic)
-    if (!email || !password) {
-      setError("Both fields are required!");
-      return;
-    }
-
-    // Reset error if validation passes
-    setError("");
-
-    // Example: After login, navigate to a different page (e.g., home page)
-    navigate("/");
+    console.log("Login Data:", formData);
   };
 
   return (
-    <div className="container">
-      <h2 className="text-center my-4">Login</h2>
+    <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <form onSubmit={handleSubmit} className="shadow p-4 rounded bg-light">
-            {/* Email field */}
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+        <div className="col-md-4">
+          <div className="card shadow p-4">
+            <h2 className="text-center mb-4">Login</h2>
+            <form onSubmit={handleSubmit}>
+              {/* Email Field */}
+              <div className="mb-3">
+                <label className="form-label">Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            {/* Password field */}
-            <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+              {/* Password Field */}
+              <div className="mb-3">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-            {/* Error message */}
-            {error && <div className="alert alert-danger">{error}</div>}
+              {/* Submit Button */}
+              <button type="submit" className="btn btn-primary w-100">
+                Login
+              </button>
+            </form>
 
-            {/* Submit button */}
-            <button type="submit" className="btn btn-primary w-100">
-              Login
-            </button>
-          </form>
+            {/* Register Link */}
+            <p className="text-center mt-3">
+              Don't have an account? <a href="/register" className="und">Register</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>

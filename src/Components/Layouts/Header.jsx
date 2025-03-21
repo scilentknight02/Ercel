@@ -3,78 +3,47 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header>
-      {/* Full-width Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          {/* Logo */}
-          <Link className="navbar-brand" to="/">
-            <img
-              src="https://via.placeholder.com/150" // Replace with your logo URL
-              alt="Logo"
-              width="150"
-            />
-          </Link>
-
-          {/* Toggle button for mobile view */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          {/* Navbar links */}
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              {/* Home */}
-              <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
-                  Home
-                </Link>
-              </li>
-
-              {/* Products */}
-              <li className="nav-item">
-                <Link className="nav-link" to="/products">
-                  Products
-                </Link>
-              </li>
-
-              {/* Services */}
-              <li className="nav-item">
-                <Link className="nav-link" to="/services">
-                  Services
-                </Link>
-              </li>
-
-              {/* About Us */}
-              <li className="nav-item">
-                <Link className="nav-link" to="/about">
-                  About Us
-                </Link>
-              </li>
-
-              {/* Register Now / Login Button */}
-              <li className="nav-item">
-                <Link
-                  className="btn btn-outline-light ms-2"
-                  to="/login"
-                  role="button"
-                >
-                  Register Now / Login
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    <div className="position-sticky top-0 start-0 w-100 bg-primary py-2 d-flex justify-content-between px-4 z-index-999">
+      <div className="w-25">
+        <img src="/vite.svg" alt="Logo" className="img-fluid" />
+      </div>
+      <div className="w-50 d-flex justify-content-evenly align-items-center">
+        <Link to="/" className="nav-link-custom">
+          Home
+        </Link>
+        <Link to="/about" className="nav-link-custom">
+          About
+        </Link>
+        <Link to="/services" className="nav-link-custom">
+          Services
+        </Link>
+        <Link to="/product" className="nav-link-custom">
+          Product
+        </Link>
+        <Link to="/contact" className="nav-link-custom">
+          Contact
+        </Link>
+        {/* <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/services">Services</Link>
+        <Link to="/product">Product</Link>
+        <Link to="/contact">Contact</Link> */}
+      </div>
+      <div className="w-25 d-flex justify-content-evenly align-items-center">
+        <Link to="/cart" className="nav-link-custom">
+          Cart
+        </Link>
+        <Link to="/login" className="nav-link-custom">
+          Login
+        </Link>
+        <Link to="/register" className="nav-link-custom">
+          Register
+        </Link>
+        {/* <Link to="/cart">Cart</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link> */}
+      </div>
+    </div>
   );
 };
 
